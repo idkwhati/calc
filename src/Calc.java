@@ -2,7 +2,7 @@ import java.util.Scanner;
 
 
 
-public class  calc {
+public class Calc {
 public static void calculate (float x1, float x2, int selected){
 
     switch (selected) {
