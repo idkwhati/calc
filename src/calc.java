@@ -36,11 +36,12 @@ public static void calculate (float x1, float x2, int selected){
         Scanner s = new Scanner(System.in);
 
         while (true) {
-            System.out.println("What kind of operation would you like to use? ");
+            System.out.println("What kind of operation would you like to use?\n"+"1.Addition\n"+"2.Subtraction\n"+
+                    "3.Multiplication\n"+"4.Division\n"+"5.Modulo");
 
 
             int option = s.nextInt();
-            if(option > 5)
+            if(option > 5 || option == 0)
             {
                 System.out.println("Error");
 
