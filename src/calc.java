@@ -1,59 +1,71 @@
 import java.util.Scanner;
 
 
-public class calc {
 
+public class  calc {
+public static void calculate (float x1, float x2, int selected){
+
+    switch (selected) {
+
+        case 1:
+            System.out.println("Result: " + (x1 + x2));
+            break;
+        case 2:
+            System.out.println("Result: " + (x1 - x2));
+            break;
+        case 3:
+            System.out.println("Result: " + (x1 * x2));
+            break;
+        case 4:
+            if (x2 == 0) {
+                System.out.println("You've divided by 0 !!");
+                break;
+            }
+            System.out.println("Result: " + (x1 / x2));
+            break;
+        case 5:
+            System.out.println("Result: " + (x1 % x2));
+            break;
+        default:
+            System.out.println("Error");
+    }
+
+
+}
     public static void main(String[] args) {
         Scanner s = new Scanner(System.in);
 
         while (true) {
-            System.out.println("Jakie dzialanie chcesz wykonac?\n" + "1.Dodawanie\n" + "2.Odejmowanie\n" + "3.Mnozenie\n" +
-                    "4.Dzielenie\n" + "5.Modulo");
+            System.out.println("What kind of operation would you like to use? ");
 
 
             int option = s.nextInt();
             if(option > 5)
             {
-                System.out.println("error");
+                System.out.println("Error");
 
             }
             else {
-                System.out.println("Podaj liczby: ");
-                float liczba1 = s.nextFloat();
-                float liczba2 = s.nextFloat();
+                System.out.println("Type in numbers: ");
+                float no1 = s.nextFloat();
+                float no2 = s.nextFloat();
+                calculate(no1,no2,option);
 
-                switch (option) {
-
-                    case 1:
-                        System.out.println("Wynik: " + (liczba1 + liczba2));
+                while(true) {
+                    System.out.println("Do you want to recalc? (y-yes | n-no) ");
+                    char lastoption = s.next(".").charAt(0);
+                    if (lastoption == 'y') {
                         break;
-                    case 2:
-                        System.out.println("Wynik: " + (liczba1 - liczba2));
-                        break;
-                    case 3:
-                        System.out.println("Wynik: " + (liczba1 * liczba2));
-                        break;
-                    case 4:
-                        if (liczba2 == 0) {
-                            System.out.println("Dzielenie przez 0 !!");
-                            break;
-                        }
-                        System.out.println("Wynik: " + (liczba1 / liczba2));
-                        break;
-                    case 5:
-                        System.out.println("Wynik: " + (liczba1 % liczba2));
-                        break;
-                    default:
-                        System.out.println("error");
-                }
-                System.out.println("Czy chcesz policzyc ponownie? (y-tak | n-nie) \n");
-                char lastoption = s.next(".").charAt(0);
-                if (lastoption == 'y') {
-                } else if (lastoption == 'n') {
-                    System.exit(0);
+                    } else if (lastoption == 'n') {
+                        System.exit(0);
+                    } else if (lastoption != 'n' || lastoption != 'y') {
+                        System.out.println("Wrong args ");
+                    }
                 }
             }
 
         }
     }
+
+
 }
