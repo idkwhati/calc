@@ -1,16 +1,16 @@
 import java.util.Scanner;
 
 
-
 public class Calc {
+    static Scanner s = new Scanner(System.in);
 
     public static void main(String[] args) {
-        Scanner s = new Scanner(System.in); //??? how to decalre as global variable????
+        //??? how to decalre as global variable????
 
         while (true) {
             System.out.println("What type of calculation?\n 1.Float\n 2.Int");
             int firstSelect = s.nextInt();
-            if (firstSelect == 1){//calculation on Float
+            if (firstSelect == 1) {//calculation on Float
                 System.out.println("What kind of operation would you like to use?\n 1.Addition\n 2.Subtraction\n 3.Multiplication\n 4.Division");
 
                 int option = s.nextInt();
@@ -22,20 +22,9 @@ public class Calc {
                     float no2 = s.nextFloat();
                     calculateOnFloat(no1, no2, option);
 
-                    while (true) {
-                        System.out.println("Do you want to recalc? (y-yes | n-no) ");
-                        char lastOption = s.next(".").charAt(0);
-                        if (lastOption == 'y') {
-                            break;
-                        } else if (lastOption == 'n') {
-                            System.exit(0);
-                        } else {
-                            System.out.println("Wrong argument ");
-                        }
-                    }
+                    endOfProgram();
                 }
-            }
-            else if (firstSelect==2){//calcuation on Int
+            } else if (firstSelect == 2) {//calcuation on Int
                 System.out.println("What kind of operation would you like to use?\n 1.Addition\n 2.Subtraction\n 3.Multiplication\n 4.Division");
 
 
@@ -47,18 +36,17 @@ public class Calc {
                     int no1 = s.nextInt();
                     int no2 = s.nextInt();
                     calculateOnInt(no1, no2, option);
+                    endOfProgram();
 
-                    while (true) {
-                        endOfProgram();
-                    }
                 }
 
-            }else {
+            } else {
                 System.out.println("Wrong argument!");
             }
         }
     }
-    private static void calculateOnFloat (float x1, float x2, int selected){
+
+    private static void calculateOnFloat(float x1, float x2, int selected) {
 
         switch (selected) {
 
@@ -85,7 +73,8 @@ public class Calc {
 
 
     }
-    private static void calculateOnInt (int x1, int x2, int selected){
+
+    private static void calculateOnInt(int x1, int x2, int selected) {
 
         switch (selected) {
 
@@ -112,18 +101,19 @@ public class Calc {
 
 
     }
-    private static void endOfProgram(){
-        Scanner s = new Scanner(System.in);//??? how to decalre as global variable????
-        System.out.println("Do you want to recalc? (y-yes | n-no) ");
-        char lastOption = s.next(".").charAt(0);
-        if (lastOption == 'y') {
-            break; //???
-        } else if (lastOption == 'n') {
-            System.exit(0);
-        } else {
-            System.out.println("Wrong argument ");
+
+    private static void endOfProgram() {
+        while (true) {
+            System.out.println("Do you want to recalc? (y-yes | n-no) ");
+            char lastOption = s.next(".").charAt(0);
+            if (lastOption == 'y') {
+                break; //???
+            } else if (lastOption == 'n') {
+                System.exit(0);
+            } else {
+                System.out.println("Wrong argument ");
+            }
+
         }
-
-
     }
 }
